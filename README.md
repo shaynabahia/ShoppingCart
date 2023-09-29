@@ -1,10 +1,32 @@
-# My Personal Project
+# Shayna Bahia - Personal Project
 
-## A subtitle
+## Online Shopping Cart
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+My personal project for CPSC 210 is an **online shopping cart**. This application will be similar to 
+any online shopping website where you can order items online. Users will be able to add and remove 
+items of their choice to the cart, and apply or remove discounts to items in their cart. There will
+also be an option to add items that are out of stock onto a wishlist. Users should be able to reorder
+their cart, as well as see the total price of all the items in the cart. 
 
-An example of text with **bold** and *italic* fonts.  
+Anyone who likes to shop, or needs to order something online that is not available in store
+can use this application. In fact, anyone will be able to try out this online shopping cart. 
+I chose to create a shopping cart because now more than ever, online shopping has become 
+a new normal for many people around the world. I use online shopping services all the time, and 
+thought that it would be interesting to design my own. I am also interested in seeing if there are
+any cool features that I could add to my online shopping cart that is unique an authentic. 
+
+### User stories:
+- As a user, I want to be able to *add* an item to the cart
+- As a user, I want to be able to *add* an item to my wish list if the item is out of stock
+- As a user, I want to be able to *remove* an item from the cart
+- As a user, I want to be able to *remove* an item from the wish list
+- As a user, I want to be able to *calculate* my total of all items in the cart
+- As a user, I want to be able to *apply/remove* discounts to an item(s) in the cart
+- As a user, I want to be able to *see* my entire cart, or a list of all items in the cart
+- As a user, I want to be able to save and restore the entire state of the cart so that I can save,
+  close the program, reopen the program, load and continue where I left off
+- As a user, I want to be able to re-order my cart from highest price to lowest price 
+- As a user, I want to be able to re-order my cart by most recently added 
+- As a user, I want to be able to **see** my entire wishlist 
+
+  
