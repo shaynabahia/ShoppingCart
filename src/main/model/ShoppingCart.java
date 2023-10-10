@@ -5,8 +5,6 @@ import java.util.ArrayList;
 public class ShoppingCart {
     private int total;
     public ArrayList<Item> cart;
-    private Item item;
-    private int numItems;
 
     //Represents a Shopping cart with list of items in cart,
     // and total price of all items (price > 0)
@@ -25,14 +23,18 @@ public class ShoppingCart {
         }
     }
 
-    //EFFECTS: removes an item from the cart
-    public void removeItem(Item item) {
-        this.cart.remove(item);
-    }
-
     //EFFECTS: applies given discount (in %) onto all items in the cart
     public int applyTotalDiscount(int discount) {
-        return 0; //stub
+        if (discount > 0 && discount < 100) {
+            double calculateDiscount = 1.0 - ((double) discount / 100);
+            int totalPrice = getTotal();
+            int newTotalPrice = (int) (totalPrice * calculateDiscount);
+
+            for (Item item : cart) {
+               return (item.getPrice() * newTotalPrice) / total;
+            }
+        }
+        return discount;
     }
 
     public int getNumItems() {
