@@ -1,11 +1,8 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Item {
     private  final String name;
-    private final int price;
+    private int price;
     private String sizeOfItem;
     private boolean inStock;
 
@@ -22,8 +19,13 @@ public class Item {
     //MODIFIES: this, item
     //EFFECTS: given the item and the discount percentage (if 25% discount, int = 25),
     //         applies the given amount onto item and returns the discounted price of item
-    public void applyDiscountOnItem(Item item, int discount) {
-         //stub
+    public int applyDiscountOnItem(int discount) {
+        if (discount > 0 && discount < 100) {
+            double calculateDiscount = 1.0 - ((double) discount /100);
+            int newPrice = (int) (price * calculateDiscount);
+            this.price = newPrice;
+        }
+        return discount;
     }
 
     public boolean isInStock() {
@@ -33,5 +35,9 @@ public class Item {
 
     public int getPrice() {
         return this.price;
+    }
+
+    public String getSizeOfItem() {
+        return this.sizeOfItem;
     }
 }
