@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShoppingCartTest {
@@ -53,6 +55,7 @@ class ShoppingCartTest {
         testShoppingCart.addItemToCart(item1);
         assertTrue(item1.isInStock());
         assertEquals(1, testShoppingCart.getNumItems());
+        assertEquals(50, testShoppingCart.getTotal());
         testShoppingCart.applyTotalDiscount(10);
         assertEquals(45, testShoppingCart.getTotal());
     }
@@ -67,8 +70,23 @@ class ShoppingCartTest {
         assertFalse(item2.isInStock());
         assertTrue(item3.isInStock());
         assertEquals(2, testShoppingCart.getNumItems());
+        assertEquals(180, testShoppingCart.getTotal());
         testShoppingCart.applyTotalDiscount(25);
-        assertEquals(135, testShoppingCart.getTotal());
+        assertEquals(134, testShoppingCart.getTotal());
 
+    }
+
+    @Test
+    void testGetNameOfAllItems() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        testShoppingCart.addItemToCart(item2);
+        testShoppingCart.addItemToCart(item3);
+        assertTrue(item1.isInStock());
+        assertFalse(item2.isInStock());
+        assertTrue(item3.isInStock());
+        ArrayList<String> names = new ArrayList<>();
+        names.add(item1.getNameOfItem());
+        names.add(item3.getNameOfItem());
     }
 }
