@@ -27,7 +27,7 @@ public class ShoppingCart {
     //EFFECTS: applies given discount (in %) onto all items in the cart
     public int applyTotalDiscount(int discount) {
         if (total == 0) {
-            return 0; // If the total is already 0, no need to apply a discount
+            return 0;
         }
 
         if (discount > 0 && discount < 100) {
@@ -35,8 +35,8 @@ public class ShoppingCart {
             for (Item item : cart) {
                 if (item.isInStock()) {
                     int discountedPrice = (int) (item.getPrice() * calculateDiscount);
-                    item.setPrice(discountedPrice); // Update the item's price
-                    total -= (item.getPrice() - discountedPrice); // Deduct the discounted price from the total
+                    item.setPrice(discountedPrice);
+                    total -= (item.getPrice() - discountedPrice);
                 }
             }
         }

@@ -11,6 +11,7 @@ class ShoppingCartTest {
     private Item item1;
     private Item item2;
     private Item item3;
+    private Item item4;
     ShoppingCart testShoppingCart = new ShoppingCart();
 
     @BeforeEach
@@ -18,6 +19,7 @@ class ShoppingCartTest {
         item1 = new Item("babaton contour top","green", "xs" , 50, true);
         item2 = new Item("cozy fleece hoodie", "blue", "m", 80, false);
         item3 = new Item("effortless pants", "tan", "s", 130, true);
+        item4 = new Item("shirt", "black", "m", 0, true);
         testShoppingCart = new ShoppingCart();
     }
 
@@ -47,6 +49,16 @@ class ShoppingCartTest {
         assertTrue(item3.isInStock());
         assertEquals(2, testShoppingCart.getNumItems());
         assertEquals(180, testShoppingCart.getTotal());
+    }
+    @Test
+    void testApplyTotalDiscount() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item4);
+        assertTrue(item4.isInStock());
+        assertEquals(1, testShoppingCart.getNumItems());
+        assertEquals(0, testShoppingCart.getTotal());
+        testShoppingCart.applyTotalDiscount(10);
+        assertEquals(0, testShoppingCart.getTotal());
     }
 
     @Test
