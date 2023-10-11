@@ -50,6 +50,18 @@ class ItemTest {
         assertEquals(78, item3.getPrice());
     }
 
+    @Test
+    void testGetSizeOfItem() {
+        assertEquals("xs", item1.getSizeOfItem());
+        assertEquals("m", item2.getSizeOfItem());
+    }
+
+    @Test
+    void testGetColour() {
+        assertEquals("green", item1.getColour());
+        assertEquals("blue", item3.getColour());
+    }
+
 
 
 }

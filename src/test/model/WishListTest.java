@@ -3,6 +3,8 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -34,5 +36,18 @@ public class WishListTest {
         testWishList.addItemToWishList(item2);
         testWishList.addItemToWishList(item3);
         assertEquals(2, testWishList.getNumItemsInWishlist());
+    }
+
+    @Test
+    void testGetAllItemsInWishList() {
+        testWishList = new WishList();
+        ArrayList<Item> itemsInWishList = testWishList.getAllItemsInWishList();
+        assertFalse(item2.isInStock());
+        assertFalse(item3.isInStock());
+        testWishList.addItemToWishList(item2);
+        testWishList.addItemToWishList(item3);
+        assertEquals(2, testWishList.getNumItemsInWishlist());
+        assertTrue(itemsInWishList.contains(item2));
+        assertTrue(itemsInWishList.contains(item3));
     }
 }
