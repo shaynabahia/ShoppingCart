@@ -102,5 +102,7 @@ class ShoppingCartTest {
         names.add(item3.getNameOfItem());
         assertTrue(names.contains(item1.getNameOfItem()));
         assertTrue(names.contains(item3.getNameOfItem()));
+        assertEquals("babaton contour top", names.get(0));
+        assertEquals("effortless pants", names.get(1));
     }
 }
