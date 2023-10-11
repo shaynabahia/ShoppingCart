@@ -75,8 +75,10 @@ class ItemTest {
     @Test
     void testSetPrice() {
         Item item5 = new Item("shirt", "black", "s", 0, true);
+        item5.setPrice(0);
         assertEquals(0, item5.getPrice());
         Item item6 = new Item("shirt", "black", "s", 20, true);
+        item6.setPrice(20);
         assertEquals(20, item6.getPrice());
         Item item7 = new Item("shirt", "black", "s", -10, true);
         item7.setPrice(0);
