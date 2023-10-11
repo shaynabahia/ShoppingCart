@@ -28,6 +28,9 @@ class ItemTest {
         assertEquals(50, item1.getPrice());
         item1.applyDiscountOnItem(-10);
         assertEquals(50, item1.getPrice());
+        assertEquals(130, item3.getPrice());
+        item3.applyDiscountOnItem(101);
+        assertEquals(130, item3.getPrice());
     }
 
     @Test
@@ -71,8 +74,10 @@ class ItemTest {
 
     @Test
     void testSetPrice() {
-        Item item6 = new Item("shirt", "black", "s", 0, true);
-        assertEquals(0, item6.getPrice());
+        Item item5 = new Item("shirt", "black", "s", 0, true);
+        assertEquals(0, item5.getPrice());
+        Item item6 = new Item("shirt", "black", "s", 20, true);
+        assertEquals(20, item6.getPrice());
     }
 
 
