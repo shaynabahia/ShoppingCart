@@ -24,6 +24,13 @@ class ItemTest {
     }
 
     @Test
+    void testApplyDiscountNotInRange() {
+        assertEquals(50, item1.getPrice());
+        item1.applyDiscountOnItem(-10);
+        assertEquals(50, item1.getPrice());
+    }
+
+    @Test
     void testApplyDiscountOnOneItem(){
         assertEquals(50, item1.getPrice());
         item1.applyDiscountOnItem(10);
@@ -60,6 +67,12 @@ class ItemTest {
     void testGetColour() {
         assertEquals("green", item1.getColour());
         assertEquals("blue", item3.getColour());
+    }
+
+    @Test
+    void testSetPrice() {
+        Item item5 = new Item("shirt", "black", "s", 0, true);
+        assertEquals(0, item5.getPrice());
     }
 
 
