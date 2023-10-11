@@ -21,12 +21,10 @@ any cool features that I could add to my online shopping cart that is unique an 
 > - As a user, I want to be able to *remove* an item from the cart
 > - As a user, I want to be able to *remove* an item from the wish list
 > - As a user, I want to be able to *calculate* my total of all items in the cart
-> - As a user, I want to be able to *apply/remove* discounts to an item(s) in the cart
+> - As a user, I want to be able to *apply* discounts to an item(s) in the cart
 > - As a user, I want to be able to *see* my entire cart, or a list of all items in the cart
 > - As a user, I want to be able to save and restore the entire state of the cart so that I can save,
   close the program, reopen the program, load and continue where I left off
-> - As a user, I want to be able to re-order my cart from highest price to lowest price 
-> - As a user, I want to be able to re-order my cart by most recently added 
 > - As a user, I want to be able to **see** my entire wishlist 
 
   

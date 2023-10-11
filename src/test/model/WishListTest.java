@@ -13,8 +13,8 @@ public class WishListTest {
 
     @BeforeEach
     void runBefore() {
-        item2 = new Item("cozy fleece hoodie", "m", 80, false);
-        item3 = new Item("effortless pants", "s", 130, false);
+        item2 = new Item("cozy fleece hoodie", "green", "m", 80, false);
+        item3 = new Item("effortless pants", "blue", "s", 130, false);
         testWishList = new WishList(); 
     }
 
@@ -23,7 +23,7 @@ public class WishListTest {
         testWishList = new WishList(); 
         assertFalse(item2.isInStock()); 
         testWishList.addItemToWishList(item2);
-        assertEquals(1, testWishList.getNumItemsInWIshList());
+        assertEquals(1, testWishList.getNumItemsInWishlist());
     }
 
     @Test
@@ -33,6 +33,6 @@ public class WishListTest {
         assertFalse(item3.isInStock());
         testWishList.addItemToWishList(item2);
         testWishList.addItemToWishList(item3);
-        assertEquals(2, testWishList.getNumItemsInWIshList());
+        assertEquals(2, testWishList.getNumItemsInWishlist());
     }
 }

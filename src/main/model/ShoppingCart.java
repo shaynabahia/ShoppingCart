@@ -3,8 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class ShoppingCart {
-    private int total;
-    public ArrayList<Item> cart;
+    private final int total;
+    private final ArrayList<Item> cart;
 
     //Represents a Shopping cart with list of items in cart,
     // and total price of all items (price > 0)
@@ -31,7 +31,7 @@ public class ShoppingCart {
             int newTotalPrice = (int) (totalPrice * calculateDiscount);
 
             for (Item item : cart) {
-               return (item.getPrice() * newTotalPrice) / total;
+                return (item.getPrice() * newTotalPrice) / total;
             }
         }
         return discount;
@@ -46,9 +46,17 @@ public class ShoppingCart {
     public int getTotal() {
         int total = 0;
         for (Item item : cart) {
-            total += item.getPrice();
+            total = total + item.getPrice();
         }
         return total;
+    }
+
+    public ArrayList<String> getNameOfAllItems() {
+        ArrayList<String> names = new ArrayList<>();
+        for (Item item : cart) {
+            names.add(item.getNameOfItem());
+        }
+        return names;
     }
 
 }

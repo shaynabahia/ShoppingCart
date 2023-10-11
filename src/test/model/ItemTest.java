@@ -11,9 +11,9 @@ class ItemTest {
 
     @BeforeEach
     void runBefore() {
-        item1 = new Item("babaton contour top","xs" , 50, true);
-        item2 = new Item("cozy fleece hoodie", "m", 80, false);
-        item3 = new Item("effortless pants", "s", 130, true);
+        item1 = new Item("babaton contour top" , "green", "xs" , 50, true);
+        item2 = new Item("cozy fleece hoodie", "pink", "m", 80, false);
+        item3 = new Item("effortless pants", "blue", "s", 130, true);
     }
 
     @Test

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class WishList {
-    public ArrayList<Item> wishList;
+    private final ArrayList<Item> wishList;
 
     public WishList() {
         this.wishList = new ArrayList<>();
@@ -15,8 +15,12 @@ public class WishList {
         }
     }
 
-    public int getNumItemsInWIshList() {
+    public int getNumItemsInWishlist() {
         return wishList.size();
+    }
+
+    public ArrayList<Item> getAllItemsInWishList() {
+        return wishList;
     }
 
 }

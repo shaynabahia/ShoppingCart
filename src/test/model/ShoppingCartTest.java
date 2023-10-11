@@ -13,9 +13,9 @@ class ShoppingCartTest {
 
     @BeforeEach
     void runBefore() {
-        item1 = new Item("babaton contour top","xs" , 50, true);
-        item2 = new Item("cozy fleece hoodie", "m", 80, false);
-        item3 = new Item("effortless pants", "s", 130, true);
+        item1 = new Item("babaton contour top","green", "xs" , 50, true);
+        item2 = new Item("cozy fleece hoodie", "blue", "m", 80, false);
+        item3 = new Item("effortless pants", "tan", "s", 130, true);
         testShoppingCart = new ShoppingCart();
     }
 
