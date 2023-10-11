@@ -88,5 +88,7 @@ class ShoppingCartTest {
         ArrayList<String> names = new ArrayList<>();
         names.add(item1.getNameOfItem());
         names.add(item3.getNameOfItem());
+        assertTrue(names.contains(item1.getNameOfItem()));
+        assertTrue(names.contains(item3.getNameOfItem()));
     }
 }
