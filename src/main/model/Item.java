@@ -18,10 +18,6 @@ public class Item {
 
     }
 
-//    public void setPrice(int price) {
-//        this.price = price;
-   // }
-
     //MODIFIES: this, item
     //EFFECTS: given the item and the discount percentage (if 25% discount, int = 25),
     //         applies the given amount onto item and returns the discounted price of item
@@ -33,29 +29,37 @@ public class Item {
         }
     }
 
+    //EFFECTS: checks if the item is in stock
     public boolean isInStock() {
         return this.inStock;
 
     }
 
+    //EFFECTS: sets the price of the item if price is >= 0
     public void setPrice(int price) {
         if (price >= 0) {
             this.price = price;
+        } else {
+            this.price = 0;
         }
     }
 
+    //EFFECTS: gets price of the item
     public int getPrice() {
         return this.price;
     }
 
+    //EFFECTS: gets the size of the item
     public String getSizeOfItem() {
         return this.sizeOfItem;
     }
 
+    //EFFECTS: gets name of the item
     public String getNameOfItem() {
         return this.name;
     }
 
+    //EFFECTS: gets the colour of the item
     public String getColour() {
         return this.colour;
     }

@@ -78,6 +78,9 @@ class ItemTest {
         assertEquals(0, item5.getPrice());
         Item item6 = new Item("shirt", "black", "s", 20, true);
         assertEquals(20, item6.getPrice());
+        Item item7 = new Item("shirt", "black", "s", -10, true);
+        item7.setPrice(0);
+        assertEquals(0, item7.getPrice());
     }
 
 
