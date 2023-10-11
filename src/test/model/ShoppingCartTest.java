@@ -97,10 +97,11 @@ class ShoppingCartTest {
         assertTrue(item1.isInStock());
         assertFalse(item2.isInStock());
         assertTrue(item3.isInStock());
-        ArrayList<String> names = new ArrayList<>();
-        names.add(item1.getNameOfItem());
-        names.add(item3.getNameOfItem());
+        ArrayList<String> names = testShoppingCart.getNameOfAllItems();
+
+        assertEquals(2, names.size());
         assertTrue(names.contains(item1.getNameOfItem()));
+        assertFalse(names.contains(item2.getNameOfItem()));
         assertTrue(names.contains(item3.getNameOfItem()));
         assertEquals("babaton contour top", names.get(0));
         assertEquals("effortless pants", names.get(1));
