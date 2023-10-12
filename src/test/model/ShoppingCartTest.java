@@ -59,6 +59,11 @@ class ShoppingCartTest {
         assertEquals(0, testShoppingCart.getTotal());
         testShoppingCart.applyTotalDiscount(10);
         assertEquals(0, testShoppingCart.getTotal());
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        assertTrue(item1.isInStock());
+        testShoppingCart.applyTotalDiscount(0);
+        assertTrue(testShoppingCart.getTotal() > 0);
     }
 
 
