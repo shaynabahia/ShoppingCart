@@ -65,6 +65,15 @@ class ShoppingCartTest {
         testShoppingCart.applyTotalDiscount(0);
         assertTrue(testShoppingCart.getTotal() > 0);
     }
+    @Test
+    void testApplyDiscountOnItem100() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        assertTrue(item1.isInStock());
+        assertEquals(50, testShoppingCart.getTotal());
+        testShoppingCart.applyTotalDiscount(100);
+        assertEquals(50, testShoppingCart.getTotal());
+    }
 
 
     @Test
@@ -86,6 +95,18 @@ class ShoppingCartTest {
         assertEquals(0, testShoppingCart.getTotal());
         testShoppingCart.applyTotalDiscount(10);
         assertEquals(0, testShoppingCart.getTotal());
+    }
+
+    @Test
+    void testApplyDiscountOneItemNotInStock() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        testShoppingCart.addItemToCart(item2);
+        assertTrue(item1.isInStock());
+        assertFalse(item2.isInStock());
+        assertEquals(50, testShoppingCart.getTotal());
+        testShoppingCart.applyTotalDiscount(10);
+        assertEquals(45, testShoppingCart.getTotal());
     }
 
     @Test
