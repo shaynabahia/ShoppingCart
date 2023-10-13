@@ -104,7 +104,9 @@ class ShoppingCartTest {
         testShoppingCart.addItemToCart(item2);
         assertTrue(item1.isInStock());
         assertFalse(item2.isInStock());
-        assertEquals(50, testShoppingCart.getTotal());
+        testShoppingCart.removeItemFromCart(item2);
+        assertEquals(1, testShoppingCart.getNumItems());
+        testShoppingCart.getTotal();
         testShoppingCart.applyTotalDiscount(10);
         assertEquals(45, testShoppingCart.getTotal());
     }

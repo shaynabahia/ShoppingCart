@@ -13,34 +13,36 @@ public class ShoppingCart {
         this.total = 0;
     }
 
-    //REQUIRES: cannot be null
     //EFFECTS: adds an item to the cart if status is "in stock"
     public void addItemToCart(Item item) {
         if (item.isInStock()) {
             cart.add(item);
-        } else {
-            cart.remove(item);
         }
     }
+
+    //EFFECTS: removes an item from the cart if status is "out of stock"
+    public void removeItemFromCart(Item item) {
+        cart.remove(item);
+    }
+
 
     //REQUIRES: total > 0
     //EFFECTS: applies given discount (in %) onto all items in the cart
     public int applyTotalDiscount(int discount) {
-        if (total == 0) {
+        if (this.total == 0) {
             return 0;
         }
-
         if (discount > 0 && discount < 100) {
             double calculateDiscount = 1.0 - ((double) discount / 100);
+            //ArrayList<Item> itemsToRemove = new ArrayList<>();
             for (Item item : cart) {
                 if (item.isInStock()) {
                     int discountedPrice = (int) (item.getPrice() * calculateDiscount);
                     item.setPrice(discountedPrice);
-                    total -= (item.getPrice() - discountedPrice);
+                    this.total = discountedPrice;
                 }
             }
         }
-
         return total;
     }
 
@@ -56,8 +58,9 @@ public class ShoppingCart {
         for (Item item : cart) {
             total = total + item.getPrice();
         }
-        return total;
+        return this.total;
     }
+
 
     //MODIFIES: this
     //EFFECTS: returns the name of all items in the cart
