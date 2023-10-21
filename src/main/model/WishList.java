@@ -19,8 +19,12 @@ public class WishList {
         return wishList.size();
     }
 
-    public ArrayList<Item> getAllItemsInWishList() {
-        return wishList;
+    public ArrayList<String> getAllItemsInWishList() {
+        ArrayList<String> wishlistNames = new ArrayList<>();
+        for (Item item : wishList) {
+            wishlistNames.add(item.getNameOfItem());
+        }
+        return wishlistNames;
     }
 
 }

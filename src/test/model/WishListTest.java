@@ -56,7 +56,7 @@ public class WishListTest {
     @Test
     void testGetAllItemsInWishList() {
         testWishList = new WishList();
-        ArrayList<Item> itemsInWishList = testWishList.getAllItemsInWishList();
+        ArrayList<String> itemsInWishList = testWishList.getAllItemsInWishList();
         assertFalse(item2.isInStock());
         assertFalse(item3.isInStock());
         testWishList.addItemToWishList(item2);

@@ -4,6 +4,7 @@ import model.Item;
 import model.ShoppingCart;
 import model.WishList;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ShoppingCartApp {
@@ -21,7 +22,6 @@ public class ShoppingCartApp {
     }
 
     private void menuBar() {
-
         System.out.println("Welcome to Aritzia!");
         System.out.println("To edit your cart (enter edit cart)");
         System.out.println("To edit your wishlist (enter edit wishlist)");
@@ -35,31 +35,32 @@ public class ShoppingCartApp {
                 System.out.println("add items now!");
                 addItems();
             } else if (chosen.equals("edit wishlist")) {
-                System.out.println("add items now!");
+                System.out.println("add items to wish list now!");
                 addItemsToWishList();
             } else if (chosen.equals("see cart")) {
                 displayCart();
+               // chosen = input.nextLine();
             } else if (chosen.equals("see wishlist")) {
                 displayWishList();
+              //  chosen = input.nextLine();
             } else if (chosen.equals("quit")) {
                 System.out.println("thanks for shopping!");
                 System.exit(0);
             }
         }
-
     }
 
     public void addItems() {
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
         System.out.println("what size would you like?");
-        String size = input.next();
+        String size = input.nextLine();
         System.out.println("what colour would you like?");
-        String colour = input.next();
+        String colour = input.nextLine();
         System.out.println("what is the price?");
-        String priceString = input.next();
+        String priceString = input.nextLine();
         System.out.println("would you like to apply a discount?");
-        String userInput = input.next();
+        String userInput = input.nextLine();
 
         int price = Integer.parseInt(priceString);
 
@@ -69,15 +70,13 @@ public class ShoppingCartApp {
             System.out.println("how much is the discount?");
             String discountString = input.next();
             int discount = Integer.parseInt(discountString);
-//            System.out.println(discount);
             addedItem.applyDiscountOnItem(discount);
         }
-
-
         aritzia.addItemToCart(addedItem);
 
         System.out.println("added successfully to cart!");
         System.out.println(addedItem.getSizeOfItem() + " " + addedItem.getPrice());
+        input.nextLine();
         menuBar();
     }
 
@@ -86,11 +85,11 @@ public class ShoppingCartApp {
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
         System.out.println("what size would you like?");
-        String size = input.next();
+        String size = input.nextLine();
         System.out.println("what colour would you like?");
-        String colour = input.next();
+        String colour = input.nextLine();
         System.out.println("what is the price?");
-        String priceString = input.next();
+        String priceString = input.nextLine();
         int price = Integer.parseInt(priceString);
 
         Item addedItem = new Item(name, colour, size, price, false);
@@ -98,6 +97,7 @@ public class ShoppingCartApp {
         myList.addItemToWishList(addedItem);
         System.out.println("added successfully to wishlist!");
         System.out.println(addedItem.getSizeOfItem() + " " + addedItem.getPrice());
+        menuBar();
 
     }
 
@@ -107,18 +107,21 @@ public class ShoppingCartApp {
             menuBar();
         } else {
             System.out.println("total items: " + aritzia.getNumItems());
-            System.out.println("total: " + aritzia.getTotal());
+            System.out.println("total: " + "$" + aritzia.getTotal());
             System.out.println("all items: " + aritzia.getNameOfAllItems());
+            menuBar();
         }
     }
 
     public void displayWishList() {
         if (myList.getNumItemsInWishlist() == 0) {
             System.out.println("there are currently no items in your wishlist !");
-            menuBar();
         } else {
             System.out.println(myList.getAllItemsInWishList());
+            menuBar();
+            input.nextLine();
         }
+        menuBar();
     }
 }
 
