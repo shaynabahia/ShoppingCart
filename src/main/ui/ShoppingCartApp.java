@@ -13,12 +13,11 @@ public class ShoppingCartApp {
     private final Scanner input = new Scanner(System.in);
 
 
-
     //EFFECTS: constructs an online store with a shopping cart and wishlist
     public ShoppingCartApp() {
         menuBar();
         this.aritzia = new ShoppingCart();
-       // item = new Item();
+        // item = new Item();
     }
 
     private void menuBar() {
@@ -39,10 +38,10 @@ public class ShoppingCartApp {
                 addItemsToWishList();
             } else if (chosen.equals("see cart")) {
                 displayCart();
-               // chosen = input.nextLine();
+                //   chosen = input.nextLine();
             } else if (chosen.equals("see wishlist")) {
                 displayWishList();
-              //  chosen = input.nextLine();
+                //   chosen = input.nextLine();
             } else if (chosen.equals("quit")) {
                 System.out.println("thanks for shopping!");
                 System.exit(0);
@@ -51,6 +50,7 @@ public class ShoppingCartApp {
     }
 
     public void addItems() {
+
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
         System.out.println("what size would you like?");
@@ -68,16 +68,16 @@ public class ShoppingCartApp {
 
         if (userInput.equals("yes")) {
             System.out.println("how much is the discount?");
-            String discountString = input.next();
+            String discountString = input.nextLine();
             int discount = Integer.parseInt(discountString);
             addedItem.applyDiscountOnItem(discount);
         }
-        aritzia.addItemToCart(addedItem);
 
+        aritzia.addItemToCart(addedItem);
         System.out.println("added successfully to cart!");
         System.out.println(addedItem.getSizeOfItem() + " " + addedItem.getPrice());
-        input.nextLine();
         menuBar();
+        input.nextLine();
     }
 
 
