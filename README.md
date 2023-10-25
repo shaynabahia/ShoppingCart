@@ -25,8 +25,8 @@ any cool features that I could add to my online shopping cart that is unique an 
 > - As a user, I want to be able to *see* my entire cart, or a list of all items in the cart
 > - As a user, I want to be able to **see** my entire wishlist
 > - As a user, when I select the quit option from the application menu, I want to be *reminded* to 
-> - save my to-do list to file and have the option to do so or not
-> - As a user, I want to be able to be able to load my to-do list from file (if I so choose)
+> - save my shopping cart to file and have the option to do so or not
+> - As a user, I want to be able to be able to load my shopping cart from file (if I so choose)
 
 
   

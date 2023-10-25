@@ -1,8 +1,11 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.ArrayList;
+import persistence.Writable;
 
-public class ShoppingCart {
+public class ShoppingCart implements Writable {
     private int total;
     private final ArrayList<Item> cart;
 
@@ -70,6 +73,25 @@ public class ShoppingCart {
             names.add(item.getNameOfItem());
         }
         return names;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("total", total);
+        json.put("items", itemsToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item i : cart) {
+            jsonArray.put(i.toJson());
+        }
+
+        return jsonArray;
     }
 
 }

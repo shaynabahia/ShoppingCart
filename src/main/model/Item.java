@@ -1,6 +1,10 @@
 package model;
 
-public class Item {
+
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Item implements Writable {
     private final String name;
     private int price;
     private final String sizeOfItem;
@@ -16,6 +20,24 @@ public class Item {
         this.sizeOfItem = sizeOfItem;
         this.inStock = inStock;
 
+    }
+
+    public static String[] getAvailableSizes() {
+        String[] availableSizes = new String[5];  // Replace 3 with the number of available sizes
+
+        // Populate the availableSizes array with Item objects
+//        availableSizes[0] = new Item("name", "Color", "xs", 20, true);
+//        availableSizes[1] = new Item("name", "Color", "small", 25, true);
+//        availableSizes[2] = new Item("name", "Color", "medium", 30, true);
+//        availableSizes[3] = new Item("name", "colour", "large", 35, true);
+//        availableSizes[4] = new Item("name", "colour", "extra large", 40, true);
+        availableSizes[0] = "xs";
+        availableSizes[1] = "small";
+        availableSizes[2] = "medium";
+        availableSizes[3] = "large";
+        availableSizes[4] = "xl";
+
+        return availableSizes;
     }
 
     //MODIFIES: this, item
@@ -63,4 +85,17 @@ public class Item {
     public String getColour() {
         return this.colour;
     }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("price", price);
+        json.put("size", sizeOfItem);
+        json.put("colour", colour);
+        json.put("stock", inStock);
+        return json;
+    }
+
+
 }
