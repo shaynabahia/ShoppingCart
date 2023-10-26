@@ -1,4 +1,5 @@
 package model;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ class ItemTest {
 
     @BeforeEach
     void runBefore() {
-        item1 = new Item("babaton contour top" , "green", "xs" , 50, true);
+        item1 = new Item("babaton contour top", "green", "xs", 50, true);
         item2 = new Item("cozy fleece hoodie", "pink", "m", 80, false);
         item3 = new Item("effortless pants", "blue", "s", 130, true);
     }
@@ -34,14 +35,14 @@ class ItemTest {
     }
 
     @Test
-    void testApplyDiscountOnOneItem(){
+    void testApplyDiscountOnOneItem() {
         assertEquals(50, item1.getPrice());
         item1.applyDiscountOnItem(10);
         assertEquals(45, item1.getPrice());
     }
 
     @Test
-    void testApplySameDiscountOnMultipleItems(){
+    void testApplySameDiscountOnMultipleItems() {
         assertEquals(50, item1.getPrice());
         assertEquals(130, item3.getPrice());
         item1.applyDiscountOnItem(25);
@@ -85,6 +86,17 @@ class ItemTest {
         assertEquals(0, item7.getPrice());
     }
 
+    @Test
+    void testGetAvailableSizes() {
+        String[] expectedSizes = {"xs", "small", "medium", "large", "xl"};
+
+        String[] actualSizes = Item.getAvailableSizes();
+
+        assertEquals(expectedSizes.length, actualSizes.length);
+        for (int i = 0; i < expectedSizes.length; i++) {
+            assertEquals(expectedSizes[i], actualSizes[i]);
+        }
+    }
 
 
 }

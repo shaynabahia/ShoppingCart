@@ -9,7 +9,7 @@ import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 public class ShoppingCartApp {
@@ -19,10 +19,10 @@ public class ShoppingCartApp {
     private Scanner input;
     private static final String JSON_STORE = "./data/shoppingCart.json";
     private static final String JSON_STORE_WL = "./data/wishList.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
-    private JsonWriter jsonWriterWl;
-    private JsonReader jsonReaderWl;
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+    private final JsonWriter jsonWriterWl;
+    private final JsonReader jsonReaderWl;
 
 
     //EFFECTS: constructs an online store with a shopping cart and wishlist
@@ -50,7 +50,6 @@ public class ShoppingCartApp {
 
             if (command.equals("quit")) {
                 keepGoing = false;
-
             } else {
                 processCommand(command);
             }
@@ -69,8 +68,8 @@ public class ShoppingCartApp {
         System.out.println("to see your wishlist (enter see wishlist)");
         System.out.println("to save your cart (enter save cart)");
         System.out.println("to load your cart (enter load cart)");
-        System.out.println("to save your wishlist (enter save list)");
-        System.out.println("to load your wishlist (enter load list)");
+        System.out.println("to save your wishlist (enter save wishlist)");
+        System.out.println("to load your wishlist (enter load wishlist)");
         System.out.println("quit aritzia (enter quit)");
 
     }
@@ -91,9 +90,9 @@ public class ShoppingCartApp {
             saveShoppingCart();
         } else if (command.equals("load cart")) {
             loadShoppingCart();
-        } else if (command.equals("save list")) {
+        } else if (command.equals("save wishlist")) {
             saveWishList();
-        } else if (command.equals("load list")) {
+        } else if (command.equals("load wishlist")) {
             loadWishList();
         } else {
             System.out.println("invalid selection");
@@ -127,8 +126,8 @@ public class ShoppingCartApp {
         aritzia.addItemToCart(addedItem);
         System.out.println("added successfully to cart!");
         System.out.println(addedItem.getNameOfItem() + " " + addedItem.getPrice());
-        menuBar();
-        input.nextLine();
+        //menuBar();
+        //input.nextLine();
     }
 
 
@@ -172,7 +171,7 @@ public class ShoppingCartApp {
             menuBar();
             input.nextLine();
         }
-        menuBar();
+       // menuBar();
     }
 
     // MODIFIES: this

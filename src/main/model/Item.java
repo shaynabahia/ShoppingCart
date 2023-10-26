@@ -22,15 +22,10 @@ public class Item implements Writable {
 
     }
 
+    //EFFECTS: assigns a size to an index
     public static String[] getAvailableSizes() {
-        String[] availableSizes = new String[5];  // Replace 3 with the number of available sizes
+        String[] availableSizes = new String[5];
 
-        // Populate the availableSizes array with Item objects
-//        availableSizes[0] = new Item("name", "Color", "xs", 20, true);
-//        availableSizes[1] = new Item("name", "Color", "small", 25, true);
-//        availableSizes[2] = new Item("name", "Color", "medium", 30, true);
-//        availableSizes[3] = new Item("name", "colour", "large", 35, true);
-//        availableSizes[4] = new Item("name", "colour", "extra large", 40, true);
         availableSizes[0] = "xs";
         availableSizes[1] = "small";
         availableSizes[2] = "medium";
@@ -86,6 +81,7 @@ public class Item implements Writable {
         return this.colour;
     }
 
+    //EFFECTS: converts an item to a Json object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
