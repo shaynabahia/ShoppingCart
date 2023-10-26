@@ -41,7 +41,6 @@ public class ShoppingCartApp {
         boolean keepGoing = true;
         String command;
         input = new Scanner(System.in);
-
         while (keepGoing) {
             System.out.println("welcome to aritzia!");
             menuBar();
@@ -59,7 +58,7 @@ public class ShoppingCartApp {
 
     }
 
-
+//EFFECTS: creates a menu bar that is displayed when program is run
     private void menuBar() {
 
         System.out.println("to edit your cart (enter edit cart)");
@@ -74,6 +73,7 @@ public class ShoppingCartApp {
 
     }
 
+    //EFFECTS: processes user comands and executes whichever function user chooses
     private void processCommand(String command) {
 
         if (command.equals("edit cart")) {
@@ -99,10 +99,10 @@ public class ShoppingCartApp {
         }
     }
 
+    //EFFECTS: adds items to cart and applies discount if chosen
     public void addItems() {
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
-        //System.out.println("what size would you like?");
         readItemSize();
         String size = input.nextLine();
         System.out.println("what colour would you like?");
@@ -126,11 +126,10 @@ public class ShoppingCartApp {
         aritzia.addItemToCart(addedItem);
         System.out.println("added successfully to cart!");
         System.out.println(addedItem.getNameOfItem() + " " + addedItem.getPrice());
-        //menuBar();
-        //input.nextLine();
     }
 
 
+    //EFFECTS: adds item to wishlist
     public void addItemsToWishList() {
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
@@ -147,10 +146,10 @@ public class ShoppingCartApp {
         myList.addItemToWishList(addedItem);
         System.out.println("added successfully to wishlist!");
         System.out.println(addedItem.getNameOfItem() + " " + addedItem.getPrice());
-        //menuBar();
 
     }
 
+    //EFFECTS:
     public void displayCart() {
         if (aritzia.getNumItems() == 0) {
             System.out.println("there are currently no items in your cart!");
@@ -159,8 +158,6 @@ public class ShoppingCartApp {
             System.out.println("total: " + "$" + aritzia.getTotal());
             System.out.println("all items: " + aritzia.getNameOfAllItems());
         }
-        menuBar();
-        input.nextLine();
     }
 
     public void displayWishList() {
@@ -168,10 +165,8 @@ public class ShoppingCartApp {
             System.out.println("there are currently no items in your wishlist !");
         } else {
             System.out.println(myList.getAllItemsInWishList());
-            menuBar();
             input.nextLine();
         }
-       // menuBar();
     }
 
     // MODIFIES: this

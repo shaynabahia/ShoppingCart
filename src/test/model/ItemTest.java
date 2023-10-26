@@ -82,8 +82,11 @@ class ItemTest {
         item6.setPrice(20);
         assertEquals(20, item6.getPrice());
         Item item7 = new Item("shirt", "black", "s", -10, true);
-        item7.setPrice(0);
+        item7.setPrice(-10);
         assertEquals(0, item7.getPrice());
+        Item item8 = new Item("shirt", "black", "medium", -1, true);
+        item8.setPrice(-1);
+        assertEquals(0, item8.getPrice());
     }
 
     @Test
