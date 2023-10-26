@@ -103,7 +103,7 @@ public class ShoppingCartApp {
     public void addItems() {
         System.out.println("what is the name of the item?");
         String name = input.nextLine();
-        System.out.println("what size would you like?");
+        //System.out.println("what size would you like?");
         readItemSize();
         String size = input.nextLine();
         System.out.println("what colour would you like?");

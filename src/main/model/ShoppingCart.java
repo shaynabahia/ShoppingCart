@@ -75,6 +75,10 @@ public class ShoppingCart implements Writable {
         return names;
     }
 
+    public ArrayList<Item> getItems() {
+        return cart;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

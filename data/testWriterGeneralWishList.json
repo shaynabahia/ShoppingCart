@@ -1,0 +1,16 @@
+{"wishlist": [
+    {
+        "colour": "pink",
+        "size": "",
+        "price": 90,
+        "name": "shirt",
+        "stock": false
+    },
+    {
+        "colour": "green",
+        "size": "",
+        "price": 190,
+        "name": "pants",
+        "stock": false
+    }
+]}

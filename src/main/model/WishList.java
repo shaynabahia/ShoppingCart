@@ -23,6 +23,10 @@ public class WishList implements Writable {
         return wishList.size();
     }
 
+    public ArrayList<Item> getItems() {
+        return wishList;
+    }
+
     public ArrayList<String> getAllItemsInWishList() {
         ArrayList<String> wishlistNames = new ArrayList<>();
         for (Item item : wishList) {

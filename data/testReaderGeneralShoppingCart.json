@@ -1,0 +1,19 @@
+{
+  "total" : 280,
+  "items":[
+  {
+    "name": "shirt",
+    "colour": "pink",
+    "size": "",
+    "price": 90,
+    "stock": true
+  },
+  {
+    "name": "pants",
+    "colour": "green",
+    "size": "",
+    "price": 190,
+    "stock": true
+  }
+]
+}
