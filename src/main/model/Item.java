@@ -4,6 +4,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+// constructs an item with name, price (in CAD $), size of item, colour, and whether it is in stock
 public class Item implements Writable {
     private final String name;
     private int price;

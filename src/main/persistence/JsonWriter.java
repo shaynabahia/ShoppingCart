@@ -9,7 +9,7 @@ import java.io.*;
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
-    private String destination;
+    private final String destination;
 
     // EFFECTS: constructs writer to write to destination file
     public JsonWriter(String destination) {
@@ -30,6 +30,8 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of wishlist to file
     public void writeWl(WishList wl) {
         JSONObject json = wl.toJson();
         saveToFile(json.toString(TAB));

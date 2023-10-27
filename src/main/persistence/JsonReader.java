@@ -13,14 +13,14 @@ import model.WishList;
 import org.json.*;
 
 public class JsonReader {
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
     }
 
-    // EFFECTS: reads workroom from file and returns it;
+    // EFFECTS: reads ShoppingCart from file and returns it;
     // throws IOException if an error occurs reading data from file
     public ShoppingCart read() throws IOException {
         String jsonData = readFile(source);
@@ -28,6 +28,8 @@ public class JsonReader {
         return parseShoppingCart(jsonObject);
     }
 
+    // EFFECTS: reads WishList from file and returns it;
+    // throws IOException if an error occurs reading data from file
     public WishList readWl() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);

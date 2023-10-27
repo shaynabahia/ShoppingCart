@@ -73,7 +73,7 @@ public class ShoppingCartApp {
 
     }
 
-    //EFFECTS: processes user comands and executes whichever function user chooses
+    //EFFECTS: processes user commands and executes whichever function user chooses
     private void processCommand(String command) {
 
         if (command.equals("edit cart")) {
@@ -149,7 +149,7 @@ public class ShoppingCartApp {
 
     }
 
-    //EFFECTS:
+    //EFFECTS: prints all items, how many items and the total cost of the cart
     public void displayCart() {
         if (aritzia.getNumItems() == 0) {
             System.out.println("there are currently no items in your cart!");
@@ -160,6 +160,7 @@ public class ShoppingCartApp {
         }
     }
 
+    //EFFECTS: prints all wishlist items, if list is not empty
     public void displayWishList() {
         if (myList.getNumItemsInWishlist() == 0) {
             System.out.println("there are currently no items in your wishlist !");
@@ -170,7 +171,7 @@ public class ShoppingCartApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads shopping cart  from file
     private void loadShoppingCart() {
         try {
             aritzia = jsonReader.read();
@@ -181,7 +182,7 @@ public class ShoppingCartApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
+    // EFFECTS: loads wishlist from file
     private void loadWishList() {
         try {
             myList = jsonReaderWl.readWl();

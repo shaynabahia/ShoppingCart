@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import persistence.Writable;
 
+// constructs a shopping cart with a total amount, and a list of items starting at empty
 public class ShoppingCart implements Writable {
     private int total;
     private final ArrayList<Item> cart;
@@ -75,6 +76,7 @@ public class ShoppingCart implements Writable {
         return names;
     }
 
+    //EFFECTS: gets all items from the cart and returns it
     public ArrayList<Item> getItems() {
         return cart;
     }
@@ -87,7 +89,7 @@ public class ShoppingCart implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this cart as a JSON array
     private JSONArray itemsToJson() {
         JSONArray jsonArray = new JSONArray();
 

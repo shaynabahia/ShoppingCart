@@ -16,8 +16,8 @@ thought that it would be interesting to design my own. I am also interested in s
 any cool features that I could add to my online shopping cart that is unique an authentic. 
 
 ### User stories:
-> - As a user, I want to be able to *add* an item to the cart
-> - As a user, I want to be able to *add* an item to my wish list 
+> - As a user, I want to be able to *add* arbitrary items to the cart
+> - As a user, I want to be able to *add* arbitrary items to my wish list 
 > - As a user, I want to be able to *calculate* my total of all items in the cart
 > - As a user, I want to be able to *apply* discounts to an item(s) in the cart
 > - As a user, I want to be able to *see* my entire cart, or a list of all items in the cart
