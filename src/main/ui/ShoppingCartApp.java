@@ -164,8 +164,8 @@ public class ShoppingCartApp {
         if (myList.getNumItemsInWishlist() == 0) {
             System.out.println("there are currently no items in your wishlist !");
         } else {
-            System.out.println(myList.getAllItemsInWishList());
-            input.nextLine();
+            System.out.println("wishlist items: " + myList.getAllItemsInWishList());
+           // input.nextLine();
         }
     }
 
