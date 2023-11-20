@@ -7,22 +7,38 @@ import model.WishList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+
+import javax.swing.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import java.util.Scanner;
 
-public class ShoppingCartApp {
+public class ShoppingCartApp extends JFrame {
 
     private ShoppingCart aritzia;
     private WishList myList = new WishList();
     private Scanner input;
-    private static final String JSON_STORE = "./data/shoppingCart.json";
-    private static final String JSON_STORE_WL = "./data/wishList.json";
+    protected static final String JSON_STORE = "./data/shoppingCart.json";
+    protected static final String JSON_STORE_WL = "./data/wishList.json";
     private final JsonWriter jsonWriter;
     private final JsonReader jsonReader;
     private final JsonWriter jsonWriterWl;
     private final JsonReader jsonReaderWl;
+//    private static final int WIDTH = 800;
+//    private static final int HEIGHT = 600;
+//    private static final String FILE_DESCRIPTOR = "...file";
+//    private static final String SCREEN_DESCRIPTOR = "...screen";
+//    private JComboBox<String> printCombo;
+//    private JDesktopPane desktop;
+//    private JInternalFrame controlPanel;
 
 
     //EFFECTS: constructs an online store with a shopping cart and wishlist
@@ -32,6 +48,8 @@ public class ShoppingCartApp {
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriterWl = new JsonWriter(JSON_STORE_WL);
         jsonReaderWl = new JsonReader(JSON_STORE_WL);
+
+
         runShoppingCart();
     }
 
@@ -236,6 +254,12 @@ public class ShoppingCartApp {
             System.out.println("Unable to write to file: " + JSON_STORE_WL);
         }
     }
+
+//    private void addShoppingCartDisplay() {
+//        ShoppingUI shoppingUI = new ShoppingUI();
+//        aritzia.addUser(shoppingUI);
+//        controlPanel.add(shoppingUI, BorderLayout.NORTH);
+//    }
 
 
 }

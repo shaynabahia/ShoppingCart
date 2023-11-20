@@ -81,6 +81,11 @@ public class ShoppingCart implements Writable {
         return cart;
     }
 
+    //EFFECTS: clears all items from the cart
+    public void clearCart() {
+        cart.clear();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
