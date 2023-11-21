@@ -49,7 +49,6 @@ public class JsonReader {
 
     // EFFECTS: parses shopping cart from JSON object and returns it
     private ShoppingCart parseShoppingCart(JSONObject jsonObject) {
-       // String name = jsonObject.getString("name");
         ShoppingCart sc = new ShoppingCart();
         addItems(sc, jsonObject);
         return sc;

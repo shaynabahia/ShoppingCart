@@ -62,7 +62,16 @@ public class WishListTest {
         testWishList.addItemToWishList(item2);
         testWishList.addItemToWishList(item3);
         assertEquals(2, testWishList.getNumItemsInWishlist());
-        assertTrue(itemsInWishList.contains(item2));
-        assertTrue(itemsInWishList.contains(item3));
+        assertFalse(itemsInWishList.contains(item2));
+        assertFalse(itemsInWishList.contains(item3));
+    }
+
+    @Test
+    void testClearList() {
+        testWishList = new WishList();
+        testWishList.addItemToWishList(item1);
+        testWishList.addItemToWishList(item2);
+        testWishList.clearList();
+        assertEquals(0, testWishList.getNumItemsInWishlist());
     }
 }

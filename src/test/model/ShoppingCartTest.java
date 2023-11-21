@@ -145,4 +145,13 @@ class ShoppingCartTest {
         assertEquals("babaton contour top", names.get(0));
         assertEquals("effortless pants", names.get(1));
     }
+
+    @Test
+    void testClearCart() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        testShoppingCart.addItemToCart(item2);
+        testShoppingCart.clearCart();
+        assertEquals(0, testShoppingCart.getNumItems());
+    }
 }

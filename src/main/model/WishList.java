@@ -40,6 +40,10 @@ public class WishList implements Writable {
         return wishlistNames;
     }
 
+    public void clearList() {
+        wishList.clear();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
