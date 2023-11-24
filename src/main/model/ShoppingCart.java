@@ -3,6 +3,8 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Objects;
+
 import persistence.Writable;
 
 // constructs a shopping cart with a total amount, and a list of items starting at empty
@@ -25,8 +27,14 @@ public class ShoppingCart implements Writable {
     }
 
     //EFFECTS: removes an item from the cart if status is "out of stock"
-    public void removeItemFromCart(Item item) {
-        cart.remove(item);
+    public boolean removeItemFromCart(String name) {
+        for (Item item : cart) {
+            if (item.getNameOfItem().equals(name)) {
+                cart.remove(item);
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -38,7 +46,6 @@ public class ShoppingCart implements Writable {
         }
         if (discount > 0 && discount < 100) {
             double calculateDiscount = 1.0 - ((double) discount / 100);
-            //ArrayList<Item> itemsToRemove = new ArrayList<>();
             for (Item item : cart) {
                 if (item.isInStock()) {
                     int discountedPrice = (int) (item.getPrice() * calculateDiscount);
@@ -84,6 +91,13 @@ public class ShoppingCart implements Writable {
     //EFFECTS: clears all items from the cart
     public void clearCart() {
         cart.clear();
+    }
+
+    public boolean containsItem(String name) {
+        if (cart.contains(name)) {
+            return true;
+        }
+        return false;
     }
 
     @Override

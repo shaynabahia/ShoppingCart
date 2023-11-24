@@ -25,5 +25,17 @@ any cool features that I could add to my online shopping cart that is unique an 
 > - As a user, I want to be able to *save* my entire program
 > - As a user, I want to be able to be able to load my shopping cart/wishlist from file (if I so choose)
 
+### Instructions For Grader: 
 
+> - You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking on the 
+    "add to cart" button on the cart panel, or on the "add to list" button on the wishlist panel
+> - You can generate the second required action related to the user story "adding multiple Xs to a Y" by: clicking on 
+    the "display cart" or "display wishlist" button. You can also click on the "remove" button to remove an item in the
+    cart. REMINDER: user should save the cart before the would like to remove an item  or add an item. 
+> - You can locate my visual component by clearing the cart by pressing the "clear cart" button. Once pressed, the 
+    user will be prompted to confirm if they want to clear the cart. Then, a picture will appear. To get rid of the 
+    picture, simply press the "ok" button. 
+> - You can save the state of my application by clicking the "save" button.
+> - You can reload the state of my application by clicking the "load" button. WARNING: user should save cart before 
+    loading the cart! 
   

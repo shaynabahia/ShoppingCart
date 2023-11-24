@@ -25,6 +25,7 @@ public class ShoppingCartGUI extends JFrame {
     private JTextArea wishlistTextArea;
     private JPanel buttonPanel;
     private JPanel buttonPanelWl;
+    private String name;
 
     // constructs a shopping cart gui that has a pane for the shopping cart, and a pane for the wishlist with
     // multiple buttons for each
@@ -56,6 +57,10 @@ public class ShoppingCartGUI extends JFrame {
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         createCartButtons();
+        JButton removeItem = new JButton("remove item");
+        removeItem.setForeground(new Color(246, 127, 193));
+        removeItem.addActionListener(e -> removeItemFromCart());
+        buttonPanel.add(removeItem);
 
         cartPanel.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -91,6 +96,8 @@ public class ShoppingCartGUI extends JFrame {
         clearCartButton.setForeground(new Color(246, 127, 193));
         clearCartButton.addActionListener(e -> clearCart());
         buttonPanel.add(clearCartButton);
+
+
     }
 
     // EFFECTS: creates wishlist panel and calls createButtonsWl
@@ -378,6 +385,33 @@ public class ShoppingCartGUI extends JFrame {
                 "wishlist items", JOptionPane.PLAIN_MESSAGE);
     }
 
+    public void removeItemFromCart() {
+
+        if (aritzia.getNumItems() == 0) {
+            JOptionPane.showMessageDialog(null, "There are no items in the cart to remove!");
+            return;
+        }
+
+        StringBuilder displayText = new StringBuilder("items in your cart:\n");
+        for (Item item : aritzia.getItems()) {
+            displayText.append(item.getNameOfItem()).append("\n");
+        }
+
+        String itemToRemove = JOptionPane.showInputDialog(null,
+                displayText + "\nenter the name of the item to remove:");
+        boolean removed = aritzia.removeItemFromCart(itemToRemove);
+
+
+        if (removed) {
+            JOptionPane.showMessageDialog(null, "item removed successfully");
+            updateCartTextArea();
+        }  else  {
+            JOptionPane.showMessageDialog(null, "item not found");
+            updateCartTextArea();
+        }
+    }
+
+
     //EFFECTS: displays image of sammy
     public void displayImage() {
         ImageIcon imageIcon = new ImageIcon("data/images/sammy.jpeg");
@@ -386,7 +420,6 @@ public class ShoppingCartGUI extends JFrame {
         JLabel imageLabel = new JLabel(new ImageIcon(image));
         JOptionPane.showMessageDialog(null, imageLabel, "sammy :)", JOptionPane.PLAIN_MESSAGE);
     }
-
 
 
     public static void main(String[] args) {

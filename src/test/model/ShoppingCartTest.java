@@ -104,7 +104,7 @@ class ShoppingCartTest {
         testShoppingCart.addItemToCart(item2);
         assertTrue(item1.isInStock());
         assertFalse(item2.isInStock());
-        testShoppingCart.removeItemFromCart(item2);
+        testShoppingCart.removeItemFromCart("cozy fleece hoodie");
         assertEquals(1, testShoppingCart.getNumItems());
         testShoppingCart.getTotal();
         testShoppingCart.applyTotalDiscount(10);
