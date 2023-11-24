@@ -154,4 +154,16 @@ class ShoppingCartTest {
         testShoppingCart.clearCart();
         assertEquals(0, testShoppingCart.getNumItems());
     }
+
+    @Test
+    void testRemoveItem() {
+        testShoppingCart = new ShoppingCart();
+        testShoppingCart.addItemToCart(item1);
+        testShoppingCart.addItemToCart(item3);
+        testShoppingCart.removeItemFromCart(item3.getNameOfItem());
+        assertFalse(testShoppingCart.removeItemFromCart(String.valueOf(item3)));
+        assertEquals("effortless pants", item3.getNameOfItem());
+        assertEquals(1, testShoppingCart.getNumItems());
+
+    }
 }

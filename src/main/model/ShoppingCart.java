@@ -93,12 +93,12 @@ public class ShoppingCart implements Writable {
         cart.clear();
     }
 
-    public boolean containsItem(String name) {
-        if (cart.contains(name)) {
-            return true;
-        }
-        return false;
-    }
+//    public boolean containsItem(String name) {
+//        if (cart.contains(name)) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     @Override
     public JSONObject toJson() {
