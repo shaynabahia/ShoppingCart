@@ -8,8 +8,7 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
+
 import java.io.IOException;
 
 import java.io.FileNotFoundException;
@@ -17,10 +16,10 @@ import java.io.FileNotFoundException;
 import static ui.ShoppingCartApp.JSON_STORE;
 import static ui.ShoppingCartApp.JSON_STORE_WL;
 
+// EFFECTS: a shopping cart gui that allows users to add, display, save, load and clear items in cart and wish list
 public class ShoppingCartGUI extends JFrame {
     private ShoppingCart aritzia;
     private WishList myList;
-   // private JComboBox<String> printCombo;
     private JTabbedPane tabbedPane;
     private JTextArea cartTextArea;
     private JTextArea wishlistTextArea;
@@ -42,14 +41,15 @@ public class ShoppingCartGUI extends JFrame {
         loadShoppingCart();
         loadWishList();
 
+
         setVisible(true);
 
     }
 
-
     //EFFECTS: creates the cart panel and calls createButtons
     private JPanel createCartPanel() {
         JPanel cartPanel = new JPanel(new BorderLayout());
+        cartPanel.setBackground(new Color(127, 221, 193));
         cartTextArea = new JTextArea();
         cartPanel.add(new JScrollPane(cartTextArea), BorderLayout.CENTER);
 
@@ -108,6 +108,7 @@ public class ShoppingCartGUI extends JFrame {
         return wishlistPanel;
     }
 
+    //EFFECTS: creates buttons for wish list panel
     public void createButtonsWl() {
         JButton addToListButton = new JButton("add item to wishlist");
         addToListButton.setForeground(new Color(246, 127, 193));
@@ -143,6 +144,7 @@ public class ShoppingCartGUI extends JFrame {
         tabbedPane = new JTabbedPane();
         tabbedPane.addTab("shopping cart", createCartPanel());
         tabbedPane.addTab("wishlist", createWishlistPanel());
+        tabbedPane.setBackground(new Color(127, 221, 193));
 
         getContentPane().add(tabbedPane, BorderLayout.CENTER);
     }
@@ -178,6 +180,7 @@ public class ShoppingCartGUI extends JFrame {
         );
     }
 
+    //EFFECTS: gives the option to apply discount
     private boolean applyDiscountOption() {
         int option = JOptionPane.showConfirmDialog(
                 null,
@@ -188,6 +191,7 @@ public class ShoppingCartGUI extends JFrame {
         return option == JOptionPane.YES_OPTION;
     }
 
+    //EFFECTS: adds items to wishlist
     private void addItemsToWishList() {
         String name = JOptionPane.showInputDialog("enter the name of the item:");
         String size = (String) JOptionPane.showInputDialog(
@@ -203,33 +207,39 @@ public class ShoppingCartGUI extends JFrame {
         String priceString = JOptionPane.showInputDialog("enter the price:");
         int price = Integer.parseInt(priceString);
 
-        Item addedItem = new Item(name, colour, size, price, true);
+        Item addedItem = new Item(name, colour, size, price, false);
         myList.addItemToWishList(addedItem);
         JOptionPane.showMessageDialog(null, "item added successfully to wishlist!");
     }
 
+    //EFFECTS: updates cart text area to updated cart items and total
     private void updateCartTextArea() {
         cartTextArea.setText(getCartDisplayText());
+        cartTextArea.setBackground(new Color(253, 232, 244));
     }
 
+    //EFFECTS: updates wish list text area to updated list items and total
     private void updateWishlistTextArea() {
         wishlistTextArea.setText(getWishlistDisplayText());
+        wishlistTextArea.setBackground(new Color(253, 232, 244));
     }
 
+    //EFFECTS: retrieves cart display text and displays it on the panel
     private String getCartDisplayText() {
         StringBuilder displayText = new StringBuilder();
 
         if (aritzia.getNumItems() == 0) {
-            displayText.append("There are currently no items in your cart!");
+            displayText.append("there are currently no items in your cart!");
         } else {
-            displayText.append("Total items: ").append(aritzia.getNumItems()).append("\n");
-            displayText.append("Total: $").append(aritzia.getTotal()).append("\n");
-            displayText.append("All items: ").append(aritzia.getNameOfAllItems()).append("\n");
+            displayText.append("total items: ").append(aritzia.getNumItems()).append("\n");
+            displayText.append("total: $").append(aritzia.getTotal()).append("\n");
+            displayText.append("all items: ").append(aritzia.getNameOfAllItems()).append("\n");
         }
 
         return displayText.toString();
     }
 
+    //EFFECTS: retieves wish list display text and displays it on wish list panel
     private String getWishlistDisplayText() {
         StringBuilder displayText = new StringBuilder();
 
@@ -243,12 +253,13 @@ public class ShoppingCartGUI extends JFrame {
         return displayText.toString();
     }
 
+    //EFFECTS: loads the shopping cart
     private void loadShoppingCart() {
         try {
             JsonReader cartJsonReader = new JsonReader(JSON_STORE);  // Assuming JsonReader takes a file path
             ShoppingCart loadedCart = cartJsonReader.read();
             aritzia = loadedCart;
-            updateCartTextArea();  // Update the cart display after loading
+            updateCartTextArea();
             JOptionPane.showMessageDialog(null, "shopping cart loaded successfully!");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Unable to read from file: " + JSON_STORE);
@@ -256,6 +267,7 @@ public class ShoppingCartGUI extends JFrame {
         }
     }
 
+    //EFFECTS: saves the shopping cart
     private void saveCart() {
         try {
             JsonWriter cartJsonWriter = new JsonWriter(JSON_STORE);
@@ -269,26 +281,30 @@ public class ShoppingCartGUI extends JFrame {
         }
     }
 
+    //EFFECTS: removes all items in the cart and refreshes text area, also displays picture after cleared
     private void clearCart() {
         int choice = JOptionPane.showConfirmDialog(null,
                 "are you sure you want to clear the cart?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
             aritzia.clearCart();
-            updateCartTextArea(); // Update the display after clearing the cart
+            updateCartTextArea();
             JOptionPane.showMessageDialog(null, "shopping cart cleared!");
+            displayImage();
         }
     }
 
+    //EFFECTS: removes all items in the list and refreshes text area
     private void clearList() {
         int choice = JOptionPane.showConfirmDialog(null,
                 "are you sure you want to clear wishlist?", "confirmation", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
             myList.clearList();
-            updateCartTextArea(); // Update the display after clearing the cart
+            updateCartTextArea();
             JOptionPane.showMessageDialog(null, "wishlist cleared!");
         }
     }
 
+    //EFFECTS: saves wish list
     private void saveList() {
         try {
             JsonWriter cartJsonWriter = new JsonWriter(JSON_STORE_WL);
@@ -297,11 +313,12 @@ public class ShoppingCartGUI extends JFrame {
             cartJsonWriter.close();
             JOptionPane.showMessageDialog(null, "wishlist saved successfully!");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE_WL);
+            JOptionPane.showMessageDialog(null, "unable to write to file: " + JSON_STORE_WL);
             e.printStackTrace();
         }
     }
 
+    //EFFECTS: loads wish list
     private void loadWishList() {
         try {
             JsonReader cartJsonReader = new JsonReader(JSON_STORE_WL);
@@ -310,20 +327,21 @@ public class ShoppingCartGUI extends JFrame {
             updateWishlistTextArea();
             JOptionPane.showMessageDialog(null, "wish list loaded successfully!");
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Unable to read from file: " + JSON_STORE_WL);
+            JOptionPane.showMessageDialog(null, "unable to read from file: " + JSON_STORE_WL);
             e.printStackTrace();
         }
     }
 
+    //EFFECTS: displays cart items when display cart button is pressed
     private void displayCartItems() {
         StringBuilder cartItems = new StringBuilder();
 
         if (aritzia.getNumItems() == 0) {
-            cartItems.append("There are currently no items in your cart!");
+            cartItems.append("there are currently no items in your cart!");
         } else {
-            cartItems.append("Total items: ").append(aritzia.getNumItems()).append("\n");
-            cartItems.append("Total: $").append(aritzia.getTotal()).append("\n");
-            cartItems.append("All items:\n");
+            cartItems.append("total items: ").append(aritzia.getNumItems()).append("\n");
+            cartItems.append("total: $").append(aritzia.getTotal()).append("\n");
+            cartItems.append("all items:\n");
             for (Item item : aritzia.getItems()) {
                 cartItems.append(item.getNameOfItem()).append(" - ").append(item.getPrice()).append("\n");
             }
@@ -334,9 +352,11 @@ public class ShoppingCartGUI extends JFrame {
         scrollPane.setPreferredSize(new Dimension(400, 300));
 
         JOptionPane.showMessageDialog(null, scrollPane,
-                "Shopping Cart Items", JOptionPane.PLAIN_MESSAGE);
+                "shopping cart items", JOptionPane.PLAIN_MESSAGE);
+        scrollPane.setBackground(new Color(244, 232, 253));
     }
 
+    //EFFECTS: displays wish list items when display list button is pressed
     private void displayListItems() {
         StringBuilder listItems = new StringBuilder();
 
@@ -358,9 +378,20 @@ public class ShoppingCartGUI extends JFrame {
                 "wishlist items", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //EFFECTS: displays image of sammy
+    public void displayImage() {
+        ImageIcon imageIcon = new ImageIcon("/Users/shaynabahia/project_p7i9k/data/images/sammy.jpeg");
+        Image image = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
+
+        JLabel imageLabel = new JLabel(new ImageIcon(image));
+        JOptionPane.showMessageDialog(null, imageLabel, "sammy :)", JOptionPane.PLAIN_MESSAGE);
+    }
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new ShoppingCartGUI());
     }
 }
+
 

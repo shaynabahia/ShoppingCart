@@ -6,6 +6,7 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
+// A wishlist where items can be added
 public class WishList implements Writable {
     private final ArrayList<Item> wishList;
 
