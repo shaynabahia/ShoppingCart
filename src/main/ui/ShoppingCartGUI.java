@@ -180,7 +180,7 @@ public class ShoppingCartGUI extends JFrame {
         );
     }
 
-    //EFFECTS: gives the option to apply discount
+    //EFFECTS: gives the option to apply discount on specific item
     private boolean applyDiscountOption() {
         int option = JOptionPane.showConfirmDialog(
                 null,
@@ -274,9 +274,9 @@ public class ShoppingCartGUI extends JFrame {
             cartJsonWriter.open();
             cartJsonWriter.write(aritzia);
             cartJsonWriter.close();
-            JOptionPane.showMessageDialog(null, "Shopping cart saved successfully!");
+            JOptionPane.showMessageDialog(null, "shopping cart saved successfully!");
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Unable to write to file: " + JSON_STORE);
+            JOptionPane.showMessageDialog(null, "unable to write to file: " + JSON_STORE);
             e.printStackTrace();
         }
     }
@@ -284,7 +284,7 @@ public class ShoppingCartGUI extends JFrame {
     //EFFECTS: removes all items in the cart and refreshes text area, also displays picture after cleared
     private void clearCart() {
         int choice = JOptionPane.showConfirmDialog(null,
-                "are you sure you want to clear the cart?", "Confirmation", JOptionPane.YES_NO_OPTION);
+                "are you sure you want to clear the cart?", "confirmation", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) {
             aritzia.clearCart();
             updateCartTextArea();
@@ -380,7 +380,7 @@ public class ShoppingCartGUI extends JFrame {
 
     //EFFECTS: displays image of sammy
     public void displayImage() {
-        ImageIcon imageIcon = new ImageIcon("/Users/shaynabahia/project_p7i9k/data/images/sammy.jpeg");
+        ImageIcon imageIcon = new ImageIcon("data/images/sammy.jpeg");
         Image image = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
 
         JLabel imageLabel = new JLabel(new ImageIcon(image));
