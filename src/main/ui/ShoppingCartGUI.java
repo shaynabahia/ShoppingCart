@@ -12,6 +12,8 @@ import java.awt.*;
 import java.io.IOException;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 import static ui.ShoppingCartApp.JSON_STORE;
 import static ui.ShoppingCartApp.JSON_STORE_WL;
@@ -61,6 +63,11 @@ public class ShoppingCartGUI extends JFrame {
         removeItem.setForeground(new Color(246, 127, 193));
         removeItem.addActionListener(e -> removeItemFromCart());
         buttonPanel.add(removeItem);
+
+        JButton filter = new JButton("filter cart");
+        filter.setForeground(new Color(246, 127, 193));
+        filter.addActionListener(e -> filterByPrice());
+        buttonPanel.add(filter);
 
         cartPanel.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -385,6 +392,8 @@ public class ShoppingCartGUI extends JFrame {
                 "wishlist items", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //MODIFIES: this
+    //EFFECTS: removes items from cart
     public void removeItemFromCart() {
 
         if (aritzia.getNumItems() == 0) {
@@ -405,7 +414,7 @@ public class ShoppingCartGUI extends JFrame {
         if (removed) {
             JOptionPane.showMessageDialog(null, "item removed successfully");
             updateCartTextArea();
-        }  else  {
+        } else {
             JOptionPane.showMessageDialog(null, "item not found");
             updateCartTextArea();
         }
@@ -420,6 +429,44 @@ public class ShoppingCartGUI extends JFrame {
         JLabel imageLabel = new JLabel(new ImageIcon(image));
         JOptionPane.showMessageDialog(null, imageLabel, "sammy :)", JOptionPane.PLAIN_MESSAGE);
     }
+
+    //EFFECTS: filters all items in cart by highest to lowest or lowest to highest
+    public void filterByPrice() {
+        if (aritzia.getNumItems() == 0) {
+            JOptionPane.showMessageDialog(null, "Cart empty!");
+            return;
+        }
+
+        Object[] options = {"Highest to Lowest", "Lowest to Highest"};
+        int choice = JOptionPane.showOptionDialog(null, "Choose sorting order:", "Filter by Price",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        ArrayList<Item> items = aritzia.getItems();
+        Comparator<Item> priceComparator = Comparator.comparingInt(Item::getPrice);
+
+        if (choice == JOptionPane.YES_OPTION) {
+            items.sort(priceComparator.reversed());
+        } else {
+            items.sort(priceComparator);
+        }
+
+        displaySortedCart(items);
+    }
+
+    //EFFECTS: displays filtered cart to users
+    private void displaySortedCart(ArrayList<Item> items) {
+        StringBuilder displayText = new StringBuilder("items in your cart sorted by price:\n");
+        items.forEach(item ->
+                displayText.append(item.getNameOfItem()).append(" - $").append(item.getPrice()).append("\n"));
+
+        JTextArea sortedCartDisplay = new JTextArea(displayText.toString());
+        JScrollPane scrollPane = new JScrollPane(sortedCartDisplay);
+        scrollPane.setPreferredSize(new Dimension(400, 300));
+
+        JOptionPane.showMessageDialog(null, scrollPane,
+                "Sorted Cart by Price", JOptionPane.PLAIN_MESSAGE);
+    }
+
 
 
     public static void main(String[] args) {
