@@ -31,7 +31,8 @@ any cool features that I could add to my online shopping cart that is unique an 
     "add to cart" button on the cart panel, or on the "add to list" button on the wishlist panel
 > - You can generate the second required action related to the user story "adding multiple Xs to a Y" by: clicking on 
     the "display cart" or "display wishlist" button. You can also click on the "remove" button to remove an item in the
-    cart. REMINDER: user should save the cart before the would like to remove an item  or add an item. 
+    cart. REMINDER: user should save the cart before the would like to remove an item  or add an item. To filter all the
+    X's in Y, you can click on the filter button. 
 > - You can locate my visual component by clearing the cart by pressing the "clear cart" button. Once pressed, the 
     user will be prompted to confirm if they want to clear the cart. Then, a picture will appear. To get rid of the 
     picture, simply press the "ok" button. 

@@ -27,7 +27,7 @@ public class ShoppingCartGUI extends JFrame {
     private JTextArea wishlistTextArea;
     private JPanel buttonPanel;
     private JPanel buttonPanelWl;
-    private String name;
+
 
     // constructs a shopping cart gui that has a pane for the shopping cart, and a pane for the wishlist with
     // multiple buttons for each
@@ -38,7 +38,7 @@ public class ShoppingCartGUI extends JFrame {
 
         setTitle("aritzia shopping cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(900, 600);
 
         createUI();
         loadShoppingCart();
