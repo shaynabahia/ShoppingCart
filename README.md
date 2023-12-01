@@ -82,5 +82,6 @@ item, remove an item etc. In order to do this I would create an abstract class a
 From there, I would add methods such as add(), remove() and clear() so that ShoppingCart and WishList could each have 
 their own versions of these methods to implement. This would lessen the amount of duplication in the code, and it would 
 be easier to read. 
+> UML DIAGRAM FOUND UNDER DATA -> IMAGES
 
   
