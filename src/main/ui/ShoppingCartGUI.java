@@ -1,5 +1,7 @@
 package ui;
 
+import model.EventLog;
+import model.Event;
 import model.Item;
 import model.ShoppingCart;
 import model.WishList;
@@ -27,6 +29,7 @@ public class ShoppingCartGUI extends JFrame {
     private JTextArea wishlistTextArea;
     private JPanel buttonPanel;
     private JPanel buttonPanelWl;
+    private Iterable<? extends Event> eventLog;
 
 
     // constructs a shopping cart gui that has a pane for the shopping cart, and a pane for the wishlist with
@@ -38,7 +41,7 @@ public class ShoppingCartGUI extends JFrame {
 
         setTitle("aritzia shopping cart");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 600);
+        setSize(1000, 700);
 
         createUI();
         loadShoppingCart();
@@ -64,10 +67,15 @@ public class ShoppingCartGUI extends JFrame {
         removeItem.addActionListener(e -> removeItemFromCart());
         buttonPanel.add(removeItem);
 
-        JButton filter = new JButton("filter cart");
-        filter.setForeground(new Color(246, 127, 193));
-        filter.addActionListener(e -> filterByPrice());
-        buttonPanel.add(filter);
+        JButton sort = new JButton("sort cart");
+        sort.setForeground(new Color(246, 127, 193));
+        sort.addActionListener(e -> filterByPrice());
+        buttonPanel.add(sort);
+
+        JButton quit = new JButton("quit");
+        quit.setForeground(new Color(246, 127, 193));
+        quit.addActionListener(e -> quitApplication());
+        buttonPanel.add(quit);
 
         cartPanel.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -116,6 +124,10 @@ public class ShoppingCartGUI extends JFrame {
         buttonPanelWl = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         createButtonsWl();
+        JButton quit = new JButton("quit");
+        quit.setForeground(new Color(246, 127, 193));
+        quit.addActionListener(e -> quitApplication());
+        buttonPanelWl.add(quit);
 
         wishlistPanel.add(buttonPanelWl, BorderLayout.SOUTH);
 
@@ -433,12 +445,13 @@ public class ShoppingCartGUI extends JFrame {
     //EFFECTS: filters all items in cart by highest to lowest or lowest to highest
     public void filterByPrice() {
         if (aritzia.getNumItems() == 0) {
-            JOptionPane.showMessageDialog(null, "Cart empty!");
+            JOptionPane.showMessageDialog(null, "cart empty!");
             return;
         }
 
         Object[] options = {"Highest to Lowest", "Lowest to Highest"};
-        int choice = JOptionPane.showOptionDialog(null, "Choose sorting order:", "Filter by Price",
+        int choice = JOptionPane.showOptionDialog(null, "Choose sorting order:",
+                "sort by price",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
         ArrayList<Item> items = aritzia.getItems();
@@ -464,9 +477,34 @@ public class ShoppingCartGUI extends JFrame {
         scrollPane.setPreferredSize(new Dimension(400, 300));
 
         JOptionPane.showMessageDialog(null, scrollPane,
-                "Sorted Cart by Price", JOptionPane.PLAIN_MESSAGE);
+                "sorted cart by price", JOptionPane.PLAIN_MESSAGE);
     }
 
+    //EFFECTS: quits the application
+    public void quitApplication() {
+        displayGoodbyeMessage();
+        printEventLog();
+        gracefulExit();
+    }
+
+    //EFFECTS: displays good bye message
+    private void displayGoodbyeMessage() {
+        System.out.println("goodbye!");
+        System.out.println("all events: ");
+    }
+
+    //EFFECTS: prints all events that occured and were logged
+    private void printEventLog() {
+        EventLog log = EventLog.getInstance();
+        for (Event event : log) {
+            System.out.println(event);
+        }
+    }
+
+    //EFFECTS: closes the application
+    private void gracefulExit() {
+        System.exit(0);
+    }
 
 
     public static void main(String[] args) {

@@ -3,12 +3,15 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
+import model.EventLog;
+import model.Event;
 
 import java.util.ArrayList;
 
 // A wishlist where items can be added
 public class WishList implements Writable {
     private final ArrayList<Item> wishList;
+    private EventLog eventLog;
 
     // constructs a wishlist as an empty arraylist of items
     public WishList() {
@@ -19,6 +22,7 @@ public class WishList implements Writable {
     public void addItemToWishList(Item item) {
         if (!item.isInStock()) {
             wishList.add(item);
+            eventLog.logEvent(new Event("item added to cart: " + item.getNameOfItem()));
         }
     }
 
@@ -43,6 +47,7 @@ public class WishList implements Writable {
 
     public void clearList() {
         wishList.clear();
+        eventLog.logEvent(new Event("list cleared"));
     }
 
     @Override
