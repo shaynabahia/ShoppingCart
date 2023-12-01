@@ -22,7 +22,7 @@ public class WishList implements Writable {
     public void addItemToWishList(Item item) {
         if (!item.isInStock()) {
             wishList.add(item);
-            eventLog.logEvent(new Event("item added to cart: " + item.getNameOfItem()));
+            EventLog.logEvent(new Event("item added to cart: " + item.getNameOfItem()));
         }
     }
 
@@ -46,14 +46,13 @@ public class WishList implements Writable {
     }
 
     public void clearList() {
+        EventLog.logEvent(new Event("list cleared"));
         wishList.clear();
-        eventLog.logEvent(new Event("list cleared"));
     }
 
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        //json.put("name", name);
         json.put("wishlist", itemsWlToJson());
         return json;
     }

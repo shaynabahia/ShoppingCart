@@ -1,4 +1,33 @@
 {
-    "total": 1030,
-    "items": []
+    "total": 1610,
+    "items": [
+        {
+            "colour": "blue",
+            "size": "xs",
+            "price": 85,
+            "name": "pants",
+            "stock": true
+        },
+        {
+            "colour": "white",
+            "size": "xs",
+            "price": 1350,
+            "name": "socks",
+            "stock": true
+        },
+        {
+            "colour": "yellow",
+            "size": "xs",
+            "price": 135,
+            "name": "hoodie",
+            "stock": true
+        },
+        {
+            "colour": "blue",
+            "size": "xs",
+            "price": 40,
+            "name": "sweatpants",
+            "stock": true
+        }
+    ]
 }

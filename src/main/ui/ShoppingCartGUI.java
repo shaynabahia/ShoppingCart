@@ -29,7 +29,7 @@ public class ShoppingCartGUI extends JFrame {
     private JTextArea wishlistTextArea;
     private JPanel buttonPanel;
     private JPanel buttonPanelWl;
-    private Iterable<? extends Event> eventLog;
+
 
 
     // constructs a shopping cart gui that has a pane for the shopping cart, and a pane for the wishlist with
@@ -44,9 +44,6 @@ public class ShoppingCartGUI extends JFrame {
         setSize(1000, 700);
 
         createUI();
-        loadShoppingCart();
-        loadWishList();
-
 
         setVisible(true);
 
@@ -265,7 +262,7 @@ public class ShoppingCartGUI extends JFrame {
         return displayText.toString();
     }
 
-    //EFFECTS: retieves wish list display text and displays it on wish list panel
+    //EFFECTS: retrieves wish list display text and displays it on wish list panel
     private String getWishlistDisplayText() {
         StringBuilder displayText = new StringBuilder();
 
@@ -487,13 +484,13 @@ public class ShoppingCartGUI extends JFrame {
         gracefulExit();
     }
 
-    //EFFECTS: displays good bye message
+    //EFFECTS: displays goodbye message
     private void displayGoodbyeMessage() {
         System.out.println("goodbye!");
         System.out.println("all events: ");
     }
 
-    //EFFECTS: prints all events that occured and were logged
+    //EFFECTS: prints all events that occurred and were logged
     private void printEventLog() {
         EventLog log = EventLog.getInstance();
         for (Event event : log) {

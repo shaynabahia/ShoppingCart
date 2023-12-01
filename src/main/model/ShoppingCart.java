@@ -12,21 +12,21 @@ import persistence.Writable;
 public class ShoppingCart implements Writable {
     private int total;
     private final ArrayList<Item> cart;
-    private EventLog eventLog;
+
 
     //Represents a Shopping cart with list of items in cart,
     // and total price of all items (price > 0)
     public ShoppingCart() {
         this.cart = new ArrayList<>();
         this.total = 0;
-        this.eventLog = EventLog.getInstance();
+        EventLog.getInstance();
     }
 
     //EFFECTS: adds an item to the cart if status is "in stock"
     public void addItemToCart(Item item) {
         if (item.isInStock()) {
             cart.add(item);
-            eventLog.logEvent(new Event("item added to cart: " + item.getNameOfItem()));
+            EventLog.logEvent(new Event("item added to cart: " + item.getNameOfItem()));
         }
     }
 
@@ -35,7 +35,7 @@ public class ShoppingCart implements Writable {
         for (Item item : cart) {
             if (item.getNameOfItem().equals(name)) {
                 cart.remove(item);
-                eventLog.logEvent(new Event("Item removed from cart: " + name));
+                EventLog.logEvent(new Event("Item removed from cart: " + name));
                 return true;
             }
         }
@@ -56,7 +56,6 @@ public class ShoppingCart implements Writable {
                     int discountedPrice = (int) (item.getPrice() * calculateDiscount);
                     item.setPrice(discountedPrice);
                     this.total = discountedPrice;
-                    eventLog.logEvent(new Event("discount applied on item: " + discount + "%"));
                 }
             }
         }
@@ -96,6 +95,7 @@ public class ShoppingCart implements Writable {
 
     //EFFECTS: clears all items from the cart
     public void clearCart() {
+        EventLog.logEvent(new Event("cart cleared!"));
         cart.clear();
 
     }

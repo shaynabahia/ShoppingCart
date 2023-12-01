@@ -13,7 +13,7 @@ import java.util.Iterator;
 public class EventLog implements Iterable<Event> {
     /** the only EventLog in the system (Singleton Design Pattern) */
     private static EventLog theLog;
-    private Collection<Event> events;
+    private static Collection<Event> events;
 
     /**
      * Prevent external construction.
@@ -33,7 +33,7 @@ public class EventLog implements Iterable<Event> {
     }
 
     //EFFECTS: adds an event e to the event log
-    public void logEvent(Event e) {
+    public static void logEvent(Event e) {
         events.add(e);
     }
 

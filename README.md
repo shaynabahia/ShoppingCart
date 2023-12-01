@@ -39,4 +39,48 @@ any cool features that I could add to my online shopping cart that is unique an 
 > - You can save the state of my application by clicking the "save" button.
 > - You can reload the state of my application by clicking the "load" button. WARNING: user should save cart before 
     loading the cart! 
+
+### Phase 4 Task 2: 
+goodbye!
+
+all events:
+
+Fri Dec 01 12:16:10 PST 2023
+
+item added to cart:  shirt
+
+Fri Dec 01 12:16:45 PST 2023
+
+item added to cart: pants 
+
+Fri Dec 01 12:16:56 PST 2023
+
+item added to cart: socks
+
+Fri Dec 01 12:17:08 PST 2023
+
+item added to cart: hoodie
+
+Fri Dec 01 12:18:10 PST 2023
+
+item added to cart: sweatpants
+
+Fri Dec 01 12:18:22 PST 2023
+
+Item removed from cart:  shirt
+
+Fri Dec 01 12:18:30 PST 2023
+
+cart cleared!
+
+
+### Phase 4 Task 3: 
+
+> In order to refactor my project if I had more time, I would lessen the duplication of code between my ShoppingCart 
+class and my WishList class. These classes are essentially the same, both contains a list of Items where you can add an 
+item, remove an item etc. In order to do this I would create an abstract class and make that the super class. 
+From there, I would add methods such as add(), remove() and clear() so that ShoppingCart and WishList could each have 
+their own versions of these methods to implement. This would lessen the amount of duplication in the code, and it would 
+be easier to read. 
+
   
